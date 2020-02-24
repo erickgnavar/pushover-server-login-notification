@@ -30,9 +30,7 @@ func sendMessage(message Message) {
 	request, _ := http.NewRequest("POST", path, strings.NewReader(data.Encode()))
 	response, _ := client.Do(request)
 
-	if response.StatusCode == 200 {
-		log.Println("Notification sent")
-	} else {
+	if response.StatusCode != 200 {
 		log.Println("An error ocurred")
 	}
 }
